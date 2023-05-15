@@ -85,9 +85,34 @@ public class Coffee_Maker {
 
 
 
-    protected boolean latte(){return true;}
-    protected void makelatte(){
-
+    protected boolean checklatte(){
+        if(coffee < 50){
+            System.out.println("Maaf kopi untuk pembuatan americano sudah tidak" +
+                    "mencukupi");
+            return false;
+        }
+        if (water < 100){
+            System.out.println("Maaf air untuk pembuatan americano sudah tidak" +
+                    "mencukupi");
+            return false;
+        }
+        if (sugar < 15){
+            System.out.println("Maaf sugar untuk pembuatan americano sudah tidak" +
+                    "mencukupi");
+            return false;
+        }
+        if (creamer < 15){
+            System.out.println("Maaf creamer untuk pembuatan americano sudah tidak" +
+                    "mencukupi");
+            return false;
+        }
+        return true;}
+    protected float makelatte(){
+        this.coffee = this.coffee - 50;
+        this.water = this.water - 100;
+        this.sugar = this.sugar - 15;
+        this.creamer = this.creamer - 15;
+        return this.latte_price;
     }
 
     protected void availableCoffee(){

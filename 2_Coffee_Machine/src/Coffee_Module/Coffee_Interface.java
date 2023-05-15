@@ -15,6 +15,7 @@ public class Coffee_Interface {
     // masukin duid yang harus dibayar pelanggan.
     Scanner sc;
     Coffee_Maker cm;
+    Payment cp;
     float price;
 
     public Coffee_Interface(){
@@ -27,6 +28,7 @@ public class Coffee_Interface {
         // user mau minum kopi apa.
         sc = new Scanner(System.in);
         cm = new Coffee_Maker();
+        cp = new Payment();
         pilihKopi();
     }
 
@@ -74,16 +76,20 @@ public class Coffee_Interface {
 
         } else if (pilihan == "3") {
             // masukin latte
-
+            if(cm.checklatte()){
+                price = cm.makelatte();
+            }else{
+                return;
+            }
         } else {
             System.out.println("Terima kasih sudah menggunakan sistem kami");
             return;
         }
-
+        payment();
     }
 
     public void payment(){
-
+        cp.processPayment(price);
     }
 
 
